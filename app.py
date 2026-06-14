@@ -4,9 +4,15 @@ from flask_cors import CORS
 
 from data_loader import get_users, get_events
 from risk_engine import calculate_risk
+from flask import render_template
 
 app = Flask(__name__)
 CORS(app)
+from flask import render_template
+
+@app.route("/")
+def home():
+    return render_template("index.html")
 
 users_df = get_users()
 events_df = get_events()
